@@ -1,9 +1,9 @@
 
-import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist/view_model/view_model.dart';
+
 
 class UpdateBottom extends StatelessWidget {
   const UpdateBottom({super.key});
@@ -26,8 +26,6 @@ class UpdateBottom extends StatelessWidget {
                 onSubmitted: (value) {
                   if (entryController.text.isNotEmpty) {
                     viewModel.updateUsername(entryController.text );
-                    viewModel.addTask(newObject());
-                    entryController.clear();
 
                   }
                   Navigator.of(context).pop();
@@ -36,7 +34,7 @@ class UpdateBottom extends StatelessWidget {
                 decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(bottom: 5),
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                   // fillColor: Colors.grey.shade200,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                         borderSide: const BorderSide(
@@ -47,14 +45,14 @@ class UpdateBottom extends StatelessWidget {
 
                 textAlign: TextAlign.center,
                 textAlignVertical: TextAlignVertical.center,
-                cursorColor: Colors.grey.shade900,
+              //  cursorColor: Colors.grey.shade900,
                 autofocus: true,
                 autocorrect: false,
                 controller: entryController,
                 style: TextStyle(
                     color: Colors.grey.shade900, fontWeight: FontWeight.w500
                 ),
-              ),
+              )
             ),
           ),
         ),

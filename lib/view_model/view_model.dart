@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
-
 import 'package:todolist/model/task_model.dart';
 import 'package:todolist/model/user_model.dart';
+
+
 
 class ViewModel extends ChangeNotifier{
 
   List<Tasks> tasks = <Tasks>[];
-  
-  User user =User('AM');
 
-  String getusername(){
-    return user.username;
+  User user =User('AM AI');
+
+  void addtask( Tasks newTask){
+
+    tasks.add(newTask);
+
+    notifyListeners();
   }
+
+  String get username => user.username;
 
   int numofnotcompelte(){
     return tasks.where((tasks) => !tasks.completed).length;
   }
 
 
- int getlengthtask(){
+  int getlengthtask(){
 
     return tasks.length;
- }
+  }
 
   void settaskvalue ( int taskindex, bool taskvalue ){
 
@@ -29,15 +35,7 @@ class ViewModel extends ChangeNotifier{
 
     notifyListeners();
   }
-  
-  void addTask( Tasks newTask ) {
-    
-    tasks.add(newTask);
-    
-    print(newTask);
 
-    notifyListeners();
-  }
 
   void deletetask( int taskindex){
 
@@ -57,7 +55,7 @@ class ViewModel extends ChangeNotifier{
   }
 
   void updateUsername(String newUsername){
-    user.username = newUsername;
+  user.username = newUsername;
     notifyListeners();
   }
 
@@ -71,7 +69,7 @@ class ViewModel extends ChangeNotifier{
     notifyListeners();
   }
 
-  void bootombuilder(Widget bottomview, BuildContext context){
+  void bottomSheetBuilder(Widget bottomview, BuildContext context){
     showBottomSheet(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
         clipBehavior: Clip.antiAliasWithSaveLayer,

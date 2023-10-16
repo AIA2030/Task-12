@@ -64,7 +64,7 @@ class AlertshowDialog extends StatelessWidget {
               onPressed: () {
 
                 Tasks newTask = Tasks(entryController.text, false);
-                viewModel.addTask(newTask);
+                viewModel.addtask(newTask);
                 entryController.clear();
                 Navigator.of(context).pop();
               },
@@ -73,8 +73,7 @@ class AlertshowDialog extends StatelessWidget {
           ],
         )  ;
 
-      }     )
-
-    ;
+      }
+      );
   }
 }

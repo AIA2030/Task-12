@@ -1,4 +1,5 @@
-class User {
+
+class User{
 
   String username;
 

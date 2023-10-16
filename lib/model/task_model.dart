@@ -1,8 +1,10 @@
+
 class Tasks{
 
-String title;
+  String title;
 
-bool completed;
+  bool completed;
 
-Tasks (this.title, this.completed);
+  Tasks(this.title, this.completed);
+
 }

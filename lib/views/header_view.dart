@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist/view_model/view_model.dart';
-import 'package:todolist/views/bottom/update_bottom.dart';
 import 'package:todolist/views/bottom/delete_bottom.dart';
 import 'package:todolist/views/bottom/setting_bottom.dart';
+
 
 
 class Header extends StatelessWidget {
@@ -17,11 +17,11 @@ class Header extends StatelessWidget {
 
         Row(
           children: [
-            Expanded( flex: 3 ,child: Text("welcome ${viewModel.user}")),
+            Expanded( flex: 3 ,child: Text("welcome ${viewModel.username}")),
 
             Expanded( flex: 1 ,child: IconButton( onPressed: () {
 
-              viewModel.bootombuilder(SettingsBottom(), context);
+              viewModel.bottomSheetBuilder(SettingsBottom(), context);
             },
 
               icon: Icon(Icons.settings),
@@ -29,14 +29,14 @@ class Header extends StatelessWidget {
 
             Expanded( flex: 1 ,child: IconButton( onPressed: () {
 
-              viewModel.bootombuilder(DeleteBottomSheet(), context);
+              viewModel.bottomSheetBuilder(DeleteBottomSheet(), context);
             },
 
               icon: Icon(Icons.delete),
             )),
           ],
         );
-     });
+    });
 
   }
 }

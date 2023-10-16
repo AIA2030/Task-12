@@ -10,76 +10,62 @@ class ListViewA extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer <ViewModel>(builder: (context, viewModel, child) {
+    return
+      Consumer<ViewModel>(builder: (context , viewModel , child  ){
 
-      return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(30))
-        ),
-
-        child: ListView.separated  (
-            padding: EdgeInsets.all(15),
-            separatorBuilder: (context, index){
-              return SizedBox(height: 10,);
-            },
-            itemCount: viewModel.getlengthtask() ,
-            itemBuilder: (context, index){
-              return Dismissible(key: UniqueKey(),
-                onDismissed: (direction){
-                HapticFeedback.mediumImpact();
-                viewModel.deletetask(index);
+        return  Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+            child: ListView.separated(
+              padding: EdgeInsets.all(15),
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 10);
               },
+              itemCount: viewModel.getlengthtask()  , //opration//
+              itemBuilder: (context, index) {
+                return Dismissible(
+                  key: UniqueKey(),
+                  onDismissed: (direction) {
+
+                    HapticFeedback.mediumImpact();
+                    viewModel.deletetask(index);
+                  },
                   background: Container(
-              margin: EdgeInsets.symmetric(horizontal: 5),
-              decoration: BoxDecoration(
-              color: Colors.red.shade300,
-              borderRadius: BorderRadius.circular(10)
-              ),
-                    child: Center(
-                      child: Icon(Icons.delete, color: Colors.red.shade700,),
-                    ),
-
-                  ),
-                  child: Container(
-
+                    margin: EdgeInsets.symmetric(horizontal: 5),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20)
-                    ),
+                        color: Colors.red.shade300,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                        child: Icon(Icons.delete, color: Colors.red.shade700)),
+                  ),  //bacl delet icon
+                  child: Container(
+                    decoration: BoxDecoration(
 
+                        borderRadius: BorderRadius.circular(20)),
                     child: ListTile(
-                    leading: Checkbox(
-              shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5)
-              ),
-              side: BorderSide(width: 2),
-              checkColor: Colors.cyan,
-              activeColor: Colors.yellow,
+                        leading: Checkbox(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                          side: BorderSide(width: 2),
+                          checkColor: Colors.cyan,
+                          activeColor: Colors.yellow,
 
-              value: viewModel.getvalueoftask(index),
-              onChanged: (value) {
+                          value: viewModel.getvalueoftask(index) ,
+                          onChanged: (value){
 
-              viewModel.settaskvalue(index, value!);
+                            viewModel.settaskvalue(index, value!);
+                          },
+                        ),
+                        title: Text(viewModel.gettitleoftask(index),
+                            style: TextStyle(
 
+                                fontSize: 17,
+                                fontWeight: FontWeight.w500))),
+                  ),
+                );
               },
-              ),
-
-              title: Text(viewModel.gettitleoftask(index),
-              style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w500
-              ),
-
-                  ),
-                    ),
-                  ),
-              );
-            },
-        ),
-      );
-
-     }
-
-     );
+            ))  ;
+      });
 
   }
 }
